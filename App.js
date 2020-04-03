@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { AppLoading } from 'expo';
-import { StyleSheet, Text, View, Image} from 'react-native';
+import { StyleSheet, Text, View, Image, StatusBar} from 'react-native';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import {Ionicons} from '@expo/vector-icons';
@@ -42,9 +42,12 @@ export default function App() {
 
   return (
     isReady ? (
-      <NavigationContainer>
-        <Stack />
-      </NavigationContainer>
+      <>
+        <NavigationContainer>
+          <Stack />
+        </NavigationContainer>
+        <StatusBar barStyle="light-content"/>
+      </>
     )
     : (
       <AppLoading
