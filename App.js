@@ -4,6 +4,10 @@ import { StyleSheet, Text, View, Image} from 'react-native';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import {Ionicons} from '@expo/vector-icons';
+import {NavigationContainer} from '@react-navigation/native'
+import Stack from './navigation/Stack'
+
+
 
 const cacheImage = images =>
   images.map(image => {
@@ -38,11 +42,9 @@ export default function App() {
 
   return (
     isReady ? (
-      <View>
-        <Text>
-          Ready!
-        </Text>
-      </View>
+      <NavigationContainer>
+        <Stack />
+      </NavigationContainer>
     )
     : (
       <AppLoading
