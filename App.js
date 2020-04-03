@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { AppLoading } from 'expo';
 import { StyleSheet, Text, View, Image} from 'react-native';
 import { Asset } from 'expo-asset';
+import * as Font from 'expo-font';
+import {Ionicons} from '@expo/vector-icons';
 
 const cacheImage = images =>
   images.map(image => {
@@ -12,6 +14,10 @@ const cacheImage = images =>
     }
   })
 
+const cacheFonts = fonts => (
+  fonts.map(font => [Font.loadAsync(font), Font.loadAsync(font)])
+)
+  
 
 export default function App() {
 
@@ -22,14 +28,21 @@ export default function App() {
       require("./assets/splash.png")
     ])
 
-    console.log(images)
+    // console.log(images)
+    const fonts = cacheFonts([Ionicons.font])
+    return Promise.all([...images, ...fonts])
+
   }
 
   const onFinish = () => setIsReady(true)
 
   return (
     isReady ? (
-      <Text>Ready!</Text>
+      <View>
+        <Text>
+          Ready!
+        </Text>
+      </View>
     )
     : (
       <AppLoading
