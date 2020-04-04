@@ -9,20 +9,11 @@ import {Platform} from 'react-native'
 
 const Tabs = createBottomTabNavigator()
 
-// const getHeaderName = route =>
-//     route?.state?.routeName[route.state.index] || 'Movies'
-
-const getHeaderName = route =>
-    route?.state?.routeNames[route.state.index] || "Movies";
+const getHeaderName = route => 
+    route?.state?.routeNames[route.state.index] || 'Movies'
 
 
 export default ({navigation, route}) => {
-
-    // useLayoutEffect(() => {
-    //     navigation.setOptions({
-    //         title : getHeaderName(route)
-    //     })
-    // }, [route])
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -34,6 +25,7 @@ export default ({navigation, route}) => {
         <Tabs.Navigator
             screenOptions={({route}) => ({
                 tabBarIcon : ({focused}) => {
+                    // 플랫폼 별로 선택된 route의 이름을 확인하여 아이콘을 설정합니다.
                     let iconName = Platform.OS === 'ios' ? 'ios-' : 'md-';
                     if (route.name === 'Movies') {
                         iconName += 'film'
