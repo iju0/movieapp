@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const TMDB_KEY = '24ca04c6a3c3f77dcd86b12fdef8c829';
 const makeRequest = (path, params) => 
-    axios.get(`https://api.themoviedb.org/3/${path}`, {
+    axios.get(`https://api.themoviedb.org/3${path}`, {
         params : {
             ...params,
             api_key : TMDB_KEY
@@ -14,10 +14,14 @@ const getAnything = async(path, params = {}) => {
     try {
 
         const {
-            data : {results}
+            data : {results},
+            data
         } = await makeRequest(path, params)
 
+        return [results || data, null]
+
     } catch (e) {
+        console.log(e)
         return [null, e]
     }
 }
