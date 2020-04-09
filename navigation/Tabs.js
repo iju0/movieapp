@@ -1,11 +1,12 @@
 import React, {useLayoutEffect } from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Movies from '../screens/Movies';
+import Movies from '../Movies';
 import Favs from '../screens/Favs';
 import Search from '../screens/Search';
 import TV from '../screens/TV';
 import {Ionicons} from '@expo/vector-icons';
 import {Platform} from 'react-native'
+
 
 const Tabs = createBottomTabNavigator()
 

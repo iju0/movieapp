@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import {View, Text} from 'react-native';
 import {movieAPI} from '../Api';
+import MoviesPresenter from './MoviesPresenter'
 
-
-export default ({navigation}) => {
+export default () => {
 
   const [movies, setMovies] = useState({
+    loading : true,
     nowPlaying : [],
     popular : [],
     upcoming : [],
@@ -20,6 +21,7 @@ export default ({navigation}) => {
     const [upcoming, upcomingError] = await movieAPI.upcoming();
 
     setMovies({
+      loading : false,
       nowPlaying,
       nowPlayingError,
       popular,
@@ -35,9 +37,7 @@ export default ({navigation}) => {
   }, [])
 
   return (
-    <View>
-      <Text>{movies.nowPlaying?.length}</Text>
-    </View>
+    <MoviesPresenter/>
   )
 
 }
