@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import Swiper from 'react-native-web-swiper'
-import { ActivityIndicator } from 'react-native'
+import { ActivityIndicator, View, Dimensions } from 'react-native'
 import Slide from '../Components/Slide'
 
+
+const {width : WIDTH, height : HEIGHT} = Dimensions.get('screen')
 
 const Container = styled.View`
     flex : 1;
@@ -11,8 +13,9 @@ const Container = styled.View`
     justify-content : center;
 `;
 
-const Text = styled.Text`
-    color : white;
+const SlideContainer = styled.View`
+    width : ${WIDTH}px;
+    height : ${HEIGHT/4}px;
 `;
 
 const MoviesPresenter = ({loading, nowPlaying}) => (
@@ -22,19 +25,21 @@ const MoviesPresenter = ({loading, nowPlaying}) => (
             <ActivityIndicator color='white' size='small'/>
         ) : (
             <>
-                <Swiper controlsEnabled={false} loop timeout={3}>
-                    {nowPlaying.map(movie => (
-                        <Slide 
-                            key={movie.id}
-                            id={movie.id}
-                            title={movie.original_title}
-                            overview={movie.overview}
-                            votes={movie.vote_average}
-                            backgroundImage={movie.backdrop_path}
-                        />
+                <SlideContainer>
+                    <Swiper controlsEnabled={false} loop timeout={3}>
+                        {nowPlaying.map(movie => (
+                            <Slide 
+                                key={movie.id}
+                                id={movie.id}
+                                title={movie.original_title}
+                                overview={movie.overview}
+                                votes={movie.vote_average}
+                                backgroundImage={movie.backdrop_path}
+                            />
 
-                    ))}
-                </Swiper>
+                        ))}
+                    </Swiper>
+                </SlideContainer>
             </>
         )}
     </Container>

@@ -4,23 +4,49 @@ import PropTypes from 'prop-types'
 import { Dimensions, Image, Slider } from 'react-native'
 import {apiImage} from '../Api'
 
-
-const {width : WIDTH, height : HEIGHT} = Dimensions.get('screen');
-
 const Container = styled.View`
-    width : ${WIDTH}px;
-    height : ${HEIGHT}px;
+    width : 100%;
+    height : 100%;
     background-color : red;
 `;
 
 const BG = styled.Image`
     width : 100%;
     height : 100%;
+    opacity : 0.6;
+    position : absolute;
+`;
+
+const Content = styled.View`
+    flex-direction : row;
+`;
+
+const Data = styled.View`
+    width : 50%;
+`;
+
+const Title = styled.Text`
+    color : white;
+    font-weight : bold;
+    font-size : 18px;
+`;
+const Votes = styled.Text`
+    color : white;
+    opacity : 0.7;
+`;
+const OverView = styled.Text`
+    color : white;
+    opacity : 0.7;
 `;
 
 const Slide = ({id, title, backgroundImage, votes, overview}) => (
     <Container>
         <BG source={{url : apiImage(backgroundImage)}}/>
+        <Data>
+            <Title>{title}</Title>
+            <Votes>{votes}</Votes>
+            <OverView>{overview}</OverView>
+        </Data>
     </Container>    
 )
 
