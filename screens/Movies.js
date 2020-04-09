@@ -1,10 +1,23 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import {View, Text} from 'react-native';
+import {movieAPI} from '../Api';
 
-export default class Movies extends Component {
-  render() {
-    return (
-      <Text> Movies </Text>
-    );
+
+export default ({navigation}) => {
+  
+  const getData = async () => {
+    const [nowPlaying, nowPlayingError] = await movieAPI.nowPlaying();
+    const [popular, popualError] = await movieAPI.popular();
   }
+
+  useEffect(() => {
+    getData();
+  }, [])
+
+  return (
+    <View>
+      <Text>Home</Text>
+    </View>
+  )
+
 }
