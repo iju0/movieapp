@@ -10,7 +10,7 @@ const {width : WIDTH, height : HEIGHT} = Dimensions.get('screen')
 const Container = styled.View`
     flex : 1;
     background-color : black;
-    justify-content : center;
+    justify-content : flex-start;
 `;
 
 const SlideContainer = styled.View`
@@ -35,6 +35,8 @@ const MoviesPresenter = ({loading, nowPlaying}) => (
                                 overview={movie.overview}
                                 votes={movie.vote_average}
                                 backgroundImage={movie.backdrop_path}
+                                poster={movie.poster_path}
+
                             />
 
                         ))}
