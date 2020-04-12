@@ -10,6 +10,7 @@ const makeRequest = (path, params) =>
     });
 
 
+// 필요한 데이터가 json 데이터 중 results 만 필요하기 때문에 해당 함수를 이용해서 필요한것만 땡겨올 수 있도록 설정
 const getAnything = async(path, params = {}) => {
     try {
 
@@ -26,6 +27,7 @@ const getAnything = async(path, params = {}) => {
     }
 }
 
+// API를 각 함수별로 땁니다.
 export const movieAPI = {
     nowPlaying : () => getAnything('/movie/now_playing'),
     popular : () => getAnything('/movie/popular'),
@@ -43,4 +45,5 @@ export const tvAPI = {
     show : id => getAnything(`/tv/${id}`)
 }
 
+// 캐시된 이미지를 가져옵니다.
 export const apiImage = path => `https://image.tmdb.org/t/p/w500${path}`;

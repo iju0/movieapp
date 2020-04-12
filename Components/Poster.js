@@ -18,4 +18,3 @@ Poster.propTypes = {
 
 export default Poster
 
-
