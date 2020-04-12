@@ -42,6 +42,7 @@ const MoviesPresenter = ({loading, nowPlaying}) => (
                         ))}
                     </Swiper>
                 </SlideContainer>
+                {/*  upcoming, popular ... */}
             </>
         )}
     </Container>
