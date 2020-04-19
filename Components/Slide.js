@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native'
 import Poster from '../Components/Poster'
 import {apiImage} from '../Api'
 import Vote from '../Components/Vote'
+import {trimText} from '../utils'
 
 
 const Container = styled.View`
@@ -59,15 +60,15 @@ const ButtonText = styled.Text`
 
 const Slide = ({id, title, backgroundImage, votes, overview, poster}) => (
     <Container>
-        <BG source={{url : apiImage(backgroundImage)}}/>
+        <BG source={{url : backgroundImage}}/>
         <Content>
-            <Poster url={apiImage(poster)}></Poster>
+            <Poster url={poster}></Poster>
             <Data>
-                <Title>{title.slice(0, 30)}</Title>
+                <Title>{trimText(title, 30)}</Title>
                 <VoteContainer>
                     <Vote votes={votes} />
                 </VoteContainer>
-                <OverView>{overview.slice(0, 120)}</OverView>
+                <OverView>{trimText(overview, 120)}</OverView>
                 <TouchableOpacity>
                     <Button>
                         <ButtonText>View Detail</ButtonText>
