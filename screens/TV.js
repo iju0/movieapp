@@ -6,6 +6,7 @@ export default ({navigation}) => {
 
 
   const [tv, setTV] = useState({
+    loading : true,
     today : [],
     thisWeek : [],
     topRated : [],
@@ -23,6 +24,7 @@ export default ({navigation}) => {
     const [popular, popularError] = await tvAPI.popular();
 
     setTV({
+      loading : false,
       today,
       todayError,
       thisWeek,

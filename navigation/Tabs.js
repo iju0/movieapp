@@ -1,9 +1,9 @@
 import React, {useLayoutEffect } from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Movies from '../Movies';
-import Favs from '../screens/Favs';
-import Search from '../screens/Search';
-import TV from '../screens/TV';
+import TV from '../TV'
+import Favs from '../Favs';
+import Search from '../Search';
 import {Ionicons} from '@expo/vector-icons';
 import {Platform} from 'react-native'
 
@@ -58,9 +58,9 @@ export default ({navigation, route}) => {
         
         >
             <Tabs.Screen name="Movies" component={Movies}/>
+            <Tabs.Screen name="TV" component={TV}/>
             <Tabs.Screen name="Favs" component={Favs}/>
             <Tabs.Screen name="Search" component={Search}/>
-            <Tabs.Screen name="TV" component={TV}/>
         </Tabs.Navigator>
     )
 
