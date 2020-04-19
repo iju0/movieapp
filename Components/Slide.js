@@ -39,6 +39,7 @@ const Votes = styled.Text`
     color : rgb(220, 220, 220);
     margin-bottom : 7px;
     font-size : 12px;
+    font-weight : 500;
 `;
 const OverView = styled.Text`
     color : rgb(220, 220, 220);
@@ -49,7 +50,7 @@ const OverView = styled.Text`
 const Button = styled.View`
     margin-top : 10px;
     background-color : #e74c3c;
-    padding : 10px;
+    padding : 7px 10px;
     border-radius : 3px;
 `;
 

@@ -1,26 +1,31 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import Swiper from 'react-native-web-swiper'
-import { ActivityIndicator, View, Dimensions } from 'react-native'
+import { ActivityIndicator, ScrollView, Dimensions } from 'react-native'
 import Slide from '../Components/Slide'
+import Title from '../Components/Title'
 
 
 const {width : WIDTH, height : HEIGHT} = Dimensions.get('screen')
 
-const Container = styled.View`
-    flex : 1;
-    background-color : black;
-    justify-content : flex-start;
-`;
+const Container = styled.View``;
 
 const SlideContainer = styled.View`
     width : ${WIDTH}px;
     height : ${HEIGHT/4}px;
+    margin-bottom : 50px;
 `;
 
 const MoviesPresenter = ({loading, nowPlaying}) => (
 
-    <Container>
+    <ScrollView
+        style={{backgroundColor : 'black'}}
+        contentContainerStyle={{
+            flex : 1,
+            justifyContent : loading ? 'center' : 'flex-start'
+        }}
+    
+    >
         {loading ? (
             <ActivityIndicator color='white' size='small'/>
         ) : (
@@ -42,10 +47,14 @@ const MoviesPresenter = ({loading, nowPlaying}) => (
                         ))}
                     </Swiper>
                 </SlideContainer>
+                <Container>
+                    <Title title={"인기상영작"} />
+                </Container>
+                
                 {/*  upcoming, popular ... */}
             </>
         )}
-    </Container>
+    </ScrollView>
 )
 
 
