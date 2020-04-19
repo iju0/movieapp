@@ -8,6 +8,7 @@ import Vertical from '../Components/Vertical'
 import Horizontal from '../Components/Horizontal'
 import ScrollContainer from '../Components/ScrollContainer'
 import HorizontalSlider from '../Components/HorizontalSlider'
+import List from '../Components/List'
 
 
 
@@ -80,7 +81,7 @@ const MoviesPresenter = ({loading, nowPlaying, popular, upcoming}) => (
                         />
                     ))}
                 </HorizontalSlider>
-                <UpComingContainer>
+                <List title={"Comming Soon"}>
                     {upcoming.map(movie => (
                         <Horizontal
                             key={movie.key}
@@ -91,8 +92,7 @@ const MoviesPresenter = ({loading, nowPlaying, popular, upcoming}) => (
                             title={movie.title}
                         />
                     ))}
-
-                </UpComingContainer>
+                </List>        
             </Container>              
         </>
     </ScrollContainer>
