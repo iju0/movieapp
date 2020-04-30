@@ -8,7 +8,11 @@ import Vote from '../../Components/Vote'
 import styled from 'styled-components/native'
 
 
-const Header = styled.View``
+const Header = styled.View`
+    height : ${Dimensions.get('window').height / 3}px;
+    align-items : center;
+    justify-content : flex-end;
+`
 
 const BG = styled.Image`
     width : 100%;
@@ -18,17 +22,53 @@ const BG = styled.Image`
 `
 
 
-const Container = styled.View``
+const Container = styled.View`
+    flex-direction : row;
+    align-items : center;
+    top : 30px;
+`
 
 const Title = styled.Text`
     color : white;
+    font-weight : 600;
+    font-size : 24px;
+    margin-bottom : 10px;
 `
 
-const Info = styled.View``
+const Info = styled.View`
+    width : 50%;
+    margin-left : 40px;
+`
+
+const Data = styled.View`
+    margin-top : 80px;
+    padding : 0px 30px;
+`
+
+const DataValue = styled.Text`
+    color : white;
+    opacity : 0.8;
+    font-weight : 500;
+`
+
+const DataName = styled.Text`
+    color : white;
+`
 
 
-
-const DetailContainer = ({navigation, route : {params : {id, title, backgroundImage, poster, votes}}}) => {
+const DetailContainer = ({
+        navigation, 
+        route : {
+            params : {
+                id, 
+                title, 
+                backgroundImage, 
+                poster, 
+                votes, 
+                overview
+            }
+        }
+    }) => {
 
     navigation.setOptions({
         title
@@ -65,16 +105,26 @@ const DetailContainer = ({navigation, route : {params : {id, title, backgroundIm
 
     return (
         <ScrollContainer loading={false}>
-            <Header>
-                <BG source={{url : apiImage(backgroundImage)}}/>
-                <Container>
-                    <Poster url={poster}/>
-                    <Info>
-                        <Title>{title}</Title>
-                        <Vote votes={votes}/>
-                    </Info>
-                </Container>
-            </Header>
+            <>
+                <Header>
+                    <BG source={{url : apiImage(backgroundImage)}}/>
+                    <Container>
+                        <Poster url={poster}/>
+                        <Info>
+                            <Title>{title}</Title>
+                            {votes && (<Vote votes={votes}/>)}
+                        </Info>
+                    </Container>
+                </Header>
+                <Data>
+                    {overview && (
+                        <>
+                            <DataName>Overview</DataName>
+                            <DataValue>{overview}</DataValue>
+                        </>
+                    )}
+                </Data>
+            </>
         </ScrollContainer>
     )
 }
