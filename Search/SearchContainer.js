@@ -5,6 +5,7 @@ import {movieAPI, tvAPI} from '../Api'
 
 const SearchContainer = () => {
 
+    const [refreshing, setRefreshing] = useState(false)
     const [keyword, setKeyword] = useState('')
     const [results, setResults] = useState({
         movies : [],
@@ -15,6 +16,11 @@ const SearchContainer = () => {
 
     const onChange = text => setKeyword(text)
     const search = async () => {
+
+        if (keyword === '') {
+            return
+        }
+
         const [movies, moviesError] = await movieAPI.search(keyword)
         const [shows, showsError] = await tvAPI.search(keyword)
 
@@ -34,6 +40,7 @@ const SearchContainer = () => {
             onChange={onChange}
             onSubmit={search}
             keyword={keyword}
+
         />
     )
 }

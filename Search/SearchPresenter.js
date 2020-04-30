@@ -16,6 +16,7 @@ const Container = styled.ScrollView`
 const SearchPresenter = ({movies, shows, keyword, onChange, onSubmit}) => (
     <ScrollContainer
         contentContainerStyle={{paddingTop : 10}}
+        refreshFn={onSubmit}        
     >
         <Input 
             placeHolder='Write a keyword'
