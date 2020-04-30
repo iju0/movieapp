@@ -4,6 +4,7 @@ import MoviesPresenter from './MoviesPresenter'
 
 export default () => {
 
+  const [refreshing, setRefreshing] = useState(false)
   const [movies, setMovies] = useState({
     loading : true,
     nowPlaying : [],
@@ -38,6 +39,7 @@ export default () => {
   return (
     <MoviesPresenter
       {...movies}
+      refreshFn={getData}
     />
   )
 

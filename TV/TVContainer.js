@@ -5,6 +5,8 @@ import {tvAPI} from '../Api'
 
 export default () => {
 
+    const [refreshing, setRefreshing] = useState(false)
+    
     const [tv, setTV] = useState({
         loading : true,
         today : [],
@@ -41,8 +43,9 @@ export default () => {
     }, [])
 
     return (
-        <TVPresenter {...tv}/>
+        <TVPresenter 
+            {...tv}
+            refreshFn={getData}
+        />
     )
-
-
 }

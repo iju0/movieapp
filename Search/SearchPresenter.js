@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import Vertical from '../Components/Vertical'
 import Horizontal from '../Components/Horizontal'
 import HorizontalSlider from '../Components/HorizontalSlider'
+import ScrollContainer from '../Components/ScrollContainer'
 
 
 const Container = styled.ScrollView`
@@ -13,7 +14,7 @@ const Container = styled.ScrollView`
 
 
 const SearchPresenter = ({movies, shows, keyword, onChange, onSubmit}) => (
-    <Container
+    <ScrollContainer
         contentContainerStyle={{paddingTop : 10}}
     >
         <Input 
@@ -51,8 +52,7 @@ const SearchPresenter = ({movies, shows, keyword, onChange, onSubmit}) => (
 
             </HorizontalSlider>
         )}        
-
-    </Container>
+    </ScrollContainer>
 )
 
 export default SearchPresenter

@@ -27,7 +27,7 @@ const UpComingContainer = styled.View`
 `;
 
 
-const MoviesPresenter = ({loading, nowPlaying, popular, upcoming}) => (
+const MoviesPresenter = ({loading, nowPlaying, popular, upcoming, refreshFn}) => (
 
     // <ScrollView
     //     style={{backgroundColor : 'black'}}
@@ -50,7 +50,7 @@ const MoviesPresenter = ({loading, nowPlaying, popular, upcoming}) => (
     //     )}
     // </ScrollView>
 
-    <ScrollContainer loading={loading}>
+    <ScrollContainer loading={loading} refreshFn={refreshFn}>
         <>
             <SlideContainer>
                 <Swiper controlsEnabled={false} loop timeout={3}>

@@ -46,4 +46,8 @@ export const tvAPI = {
 }
 
 // 캐시된 이미지를 가져옵니다.
-export const apiImage = path => `https://image.tmdb.org/t/p/w500${path}`;
+export const apiImage = path =>
+    path 
+        ? `https://image.tmdb.org/t/p/w500${path}`
+        : "https://images.unsplash.com/photo-1571847140471-1d7766e825ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=673&q=80";
+
