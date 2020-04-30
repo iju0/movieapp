@@ -1,9 +1,9 @@
 import React, {useLayoutEffect } from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Movies from '../Movies';
-import TV from '../TV'
-import Favs from '../Favs';
-import Search from '../Search';
+import Movies from '../screens/Movies';
+import TV from '../screens/TV'
+import Favs from '../screens/Favs';
+import Search from '../screens/Search';
 import {Ionicons} from '@expo/vector-icons';
 import {Platform} from 'react-native'
 

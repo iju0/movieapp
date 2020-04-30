@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import ScrollContainer from '../Components/ScrollContainer'
-import HorizontalSlider from '../Components/HorizontalSlider'
-import Vertical from '../Components/Vertical'
-import Horizontal from '../Components/Horizontal'
-import List from '../Components/List'
+import ScrollContainer from '../../Components/ScrollContainer'
+import HorizontalSlider from '../../Components/HorizontalSlider'
+import Vertical from '../../Components/Vertical'
+import Horizontal from '../../Components/Horizontal'
+import List from '../../Components/List'
 import styled from 'styled-components/native'
 
 const Container = styled.View`
@@ -39,11 +39,12 @@ const TVPresenter = ({loading, popular, topRated, today, refreshFn}) => (
             </HorizontalSlider>
             <List title="Airing Today">
                 {today.map(show => (
-                    <Vertical
+                    <Horizontal
                         key={show.id} 
                         id={show.id}
                         poster={show.poster_path}
                         vote={show.vote_average}
+                        overview={show.overview}
                         title={show.name}
                     />
                 ))}

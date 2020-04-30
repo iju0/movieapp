@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { View, Text } from 'react-native'
 import TVPresenter from './TVPresenter'
-import {tvAPI} from '../Api'
+import {tvAPI} from '../../Api'
 
 export default () => {
 

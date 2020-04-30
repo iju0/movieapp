@@ -6,6 +6,7 @@ import Poster from '../Components/Poster'
 import {apiImage} from '../Api'
 import Vote from '../Components/Vote'
 import {trimText} from '../utils'
+import {useNavigation} from '@react-navigation/native'
 
 
 const Container = styled.View`
@@ -58,26 +59,47 @@ const ButtonText = styled.Text`
     color : white;
 `;
 
-const Slide = ({id, title, backgroundImage, votes, overview, poster}) => (
-    <Container>
-        <BG source={{url : backgroundImage}}/>
-        <Content>
-            <Poster url={poster}></Poster>
-            <Data>
-                <Title>{trimText(title, 30)}</Title>
-                <VoteContainer>
-                    <Vote votes={votes} />
-                </VoteContainer>
-                <OverView>{trimText(overview, 80)}</OverView>
-                <TouchableOpacity>
-                    <Button>
-                        <ButtonText>View Detail</ButtonText>
-                    </Button>
-                </TouchableOpacity>
-            </Data>
-        </Content>
-    </Container>    
-)
+const Slide = ({id, title, backgroundImage, votes, overview, poster}) => {
+
+    const navigation = useNavigation()
+    
+    const goToDetail = () => {
+        navigation.navigate('Detail', {
+            id,
+            title,
+            poster,
+            overview,
+            votes,
+            backgroundImage
+        })
+    }
+
+    return (
+        <Container>
+            <BG source={{url : backgroundImage}}/>
+            <Content>
+                <Poster url={poster}></Poster>
+                <Data>
+                    <Title>{trimText(title, 30)}</Title>
+                    <VoteContainer>
+                        <Vote votes={votes} />
+                    </VoteContainer>
+                    <OverView>{trimText(overview, 80)}</OverView>
+                    <TouchableOpacity onPress={goToDetail}>
+                        <Button>
+                            <ButtonText>View Detail</ButtonText>
+                        </Button>
+                    </TouchableOpacity>
+                </Data>
+            </Content>
+        </Container>   
+    )
+
+
+
+}
+     
+
 
 Slide.propTypes = {
     id : PropTypes.number.isRequired,

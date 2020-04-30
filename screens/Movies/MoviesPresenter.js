@@ -1,14 +1,13 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import Swiper from 'react-native-web-swiper'
-import { ScrollView, Dimensions } from 'react-native'
-import Slide from '../Components/Slide'
-import Title from '../Components/Title'
-import Vertical from '../Components/Vertical'
-import Horizontal from '../Components/Horizontal'
-import ScrollContainer from '../Components/ScrollContainer'
-import HorizontalSlider from '../Components/HorizontalSlider'
-import List from '../Components/List'
+import { Dimensions } from 'react-native'
+import Slide from '../../Components/Slide'
+import Vertical from '../../Components/Vertical'
+import Horizontal from '../../Components/Horizontal'
+import ScrollContainer from '../../Components/ScrollContainer'
+import HorizontalSlider from '../../Components/HorizontalSlider'
+import List from '../../Components/List'
 
 
 

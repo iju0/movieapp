@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { View, Text } from 'react-native'
 import SearchPresenter from './SearchPresenter'
-import {movieAPI, tvAPI} from '../Api'
+import {movieAPI, tvAPI} from '../../Api'
 
 const SearchContainer = () => {
 
