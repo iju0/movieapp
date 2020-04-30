@@ -58,12 +58,11 @@ const MoviesPresenter = ({loading, nowPlaying, popular, upcoming}) => (
                         <Slide 
                             key={movie.id}
                             id={movie.id}
-                            title={movie.original_title}
+                            title={movie.title}
                             overview={movie.overview}
                             votes={movie.vote_average}
                             backgroundImage={movie.backdrop_path}
                             poster={movie.poster_path}
-
                         />
 
                     ))}
