@@ -36,6 +36,8 @@ export default () => {
     getData();
   }, [])
 
+  console.log(movies);
+
   return (
     <MoviesPresenter
       {...movies}

@@ -59,7 +59,7 @@ const ButtonText = styled.Text`
     color : white;
 `;
 
-const Slide = ({id, title, backgroundImage, votes, overview, poster}) => {
+const Slide = ({id, title, backgroundImage, votes, overview, poster, language, adult}) => {
 
     const navigation = useNavigation()
     
@@ -70,13 +70,15 @@ const Slide = ({id, title, backgroundImage, votes, overview, poster}) => {
             poster,
             overview,
             votes,
-            backgroundImage
+            backgroundImage,
+            language,
+            adult
         })
     }
 
     return (
         <Container>
-            <BG source={{url : backgroundImage}}/>
+            <BG source={{url : apiImage(backgroundImage)}}/>
             <Content>
                 <Poster url={poster}></Poster>
                 <Data>
@@ -94,9 +96,6 @@ const Slide = ({id, title, backgroundImage, votes, overview, poster}) => {
             </Content>
         </Container>   
     )
-
-
-
 }
      
 

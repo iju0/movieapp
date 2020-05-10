@@ -62,6 +62,8 @@ const MoviesPresenter = ({loading, nowPlaying, popular, upcoming, refreshFn}) =>
                             votes={movie.vote_average}
                             backgroundImage={movie.backdrop_path}
                             poster={movie.poster_path}
+                            language={movie.original_language}
+                            adult={movie.adult}
                         />
 
                     ))}
@@ -82,7 +84,7 @@ const MoviesPresenter = ({loading, nowPlaying, popular, upcoming, refreshFn}) =>
                 <List title={"Comming Soon"}>
                     {upcoming.map(movie => (
                         <Horizontal
-                            key={movie.key}
+                            key={movie.id}
                             id={movie.id}
                             poster={movie.poster_path}
                             releaseDate={movie.release_date}

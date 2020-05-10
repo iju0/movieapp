@@ -65,7 +65,9 @@ const DetailContainer = ({
                 backgroundImage, 
                 poster, 
                 votes, 
-                overview
+                overview,
+                language,
+                adult
             }
         }
     }) => {
@@ -74,7 +76,7 @@ const DetailContainer = ({
         title
     })
 
-    
+    console.log(language)
 
 
     // const [detail, setDetail] = useState({
@@ -102,6 +104,8 @@ const DetailContainer = ({
     //     getDetail()
     // }, [])
 
+    console.log(adult)
+
 
     return (
         <ScrollContainer loading={false}>
@@ -123,6 +127,18 @@ const DetailContainer = ({
                             <DataValue>{overview}</DataValue>
                         </>
                     )}
+                </Data>
+                <Data>
+                    {language && (
+                        <>
+                            <DataName>Language</DataName>
+                            <DataValue>{language}</DataValue>
+                        </>
+                    )}
+                </Data>
+                <Data>
+                    <DataName>adult</DataName>
+                    <DataValue>{adult ? 'Y' : 'N'}</DataValue>
                 </Data>
             </>
         </ScrollContainer>
