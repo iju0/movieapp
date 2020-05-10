@@ -3,7 +3,7 @@ import { AppLoading } from 'expo';
 import { StyleSheet, Text, View, Image, StatusBar} from 'react-native';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
-import {Ionicons} from '@expo/vector-icons';
+import {Ionicons, FontAwesome} from '@expo/vector-icons';
 import {NavigationContainer} from '@react-navigation/native'
 import Stack from './navigation/Stack'
 
@@ -41,7 +41,7 @@ export default function App() {
       require("./assets/splash.png")
     ])
     
-    const fonts = cacheFonts([Ionicons.font])
+    const fonts = cacheFonts([Ionicons.font, FontAwesome.font])
     // 모든 프로미스를 처리합니다.
     return Promise.all([...images, ...fonts])
   }

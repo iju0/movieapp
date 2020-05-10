@@ -33,7 +33,10 @@ const DetailContainer = ({
             backgroundImage,
             poster,
             overview,
-            votes
+            votes,
+            videos : {
+                results : []
+            }
         }
     })
 
