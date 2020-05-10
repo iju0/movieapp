@@ -33,7 +33,7 @@ export const movieAPI = {
     popular : () => getAnything('/movie/popular'),
     upcoming : () => getAnything('/movie/upcoming', {region : 'kr'}),
     search : query => getAnything('/search/movie', {query}),
-    movie : id => getAnything(`/movie/${id}`)
+    movie : id => getAnything(`/movie/${id}`, {append_to_response : 'videos'})
 };
 
 export const tvAPI = {
@@ -42,7 +42,7 @@ export const tvAPI = {
     topRated : () => getAnything('/tv/top_rated'),
     popular : () => getAnything('/tv/popular'),
     search : query => getAnything('/search/tv', {query}),
-    show : id => getAnything(`/tv/${id}`)
+    show : id => getAnything(`/tv/${id}`, {append_to_response : 'videos'})
 }
 
 // 캐시된 이미지를 가져옵니다.

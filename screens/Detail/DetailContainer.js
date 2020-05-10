@@ -26,31 +26,52 @@ const DetailContainer = ({
 
 
 
-    const [movie, setMovie] = useState({
-        title,
-        backgroundImage,
-        poster,
-        overview,
-        votes
+    const [detail, setDetail] = useState({
+        loading : true,
+        result : {
+            title,
+            backgroundImage,
+            poster,
+            overview,
+            votes
+        }
     })
 
 
     const getData = async() => {
 
-        if (isTv) {
-            const [getMovie, getMovieError] = await tvAPI.show(id)
-        } else {
-            const [getMovie, getMovieError] = await movieAPI.movie(id)
-        }
+        // if (isTv) {
+        //     const [getMovie, getMovieError] = await tvAPI.show(id)
+        // } else {
+        //     const [getMovie, getMovieError] = await movieAPI.movie(id)
+        // }
+        //
 
-        setMovie({
-            ...getMovie,
-            title : getMovie.title,
-            backgroundImage : getMovie.backdrop_path,
-            poster : getMovie.poster_path,
-            overview:  getMovie.overview,
-            votes : getMovie.vote_average
+        // setMovie({
+        //     ...getMovie,
+        //     title : getMovie.title,
+        //     backgroundImage : getMovie.backdrop_path,
+        //     poster : getMovie.poster_path,
+        //     overview:  getMovie.overview,
+        //     votes : getMovie.vote_average
+        // })
+
+        const [getDetail, getDetailError] = isTv ?
+            await tvAPI.show(id) : await  movieAPI.movie(id)
+
+        setDetail({
+            loading : false,
+            result : {
+                ...getDetail,
+                title : getDetail.title || getDetail.name,
+                backgroundImage : getDetail.background_path,
+                poster : getDetail.poster_path,
+                overview : getDetail.overview,
+                votes : getDetail.vote_average,
+            }
         })
+
+
     }
 
     useEffect(() => {
@@ -64,8 +85,7 @@ const DetailContainer = ({
 
     return (
         <DetailPresenter
-            {...movie}
-            loading={loading}
+            {...detail}
         />
 
 

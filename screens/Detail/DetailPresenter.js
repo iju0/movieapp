@@ -5,6 +5,7 @@ import ScrollContainer from '../../Components/ScrollContainer'
 import {apiImage} from '../../Api'
 import Poster from '../../Components/Poster'
 import Vote from '../../Components/Vote'
+import {formatDate} from '../../utils'
 
 
 const Header = styled.View`
@@ -40,7 +41,7 @@ const Info = styled.View`
 `
 
 const Data = styled.View`
-    margin-top : 80px;
+    margin-top : 30px;
     padding : 0px 30px;
 `
 
@@ -52,36 +53,76 @@ const DataValue = styled.Text`
 
 const DataName = styled.Text`
     color : white;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    font-weight: 800;
 `
 
 
 
 
-const DetailPresenter = ({movie, loading }) => (
-    <ScrollContainer loading={false}>
+const DetailPresenter = ({result, loading }) => (
+    <ScrollContainer
+        loading={false}
+        contentContainerStyle={{paddingBottom: 80}}
+    >
         <>
             <Header>
-                <BG source={{url : apiImage(movie.backgroundImage)}}/>
+                <BG source={{url : apiImage(result.backgroundImage)}}/>
                 <Container>
-                    <Poster url={movie.poster}/>
+                    <Poster url={result.poster}/>
                     <Info>
-                        <Title>{title}</Title>
-                        {movie.votes && (<Vote votes={movie.votes}/>)}
+                        <Title>{result.title}</Title>
+                        {result.votes && (<Vote votes={result.votes}/>)}
                     </Info>
                 </Container>
             </Header>
             <Data>
-                {movie.overview && (
+                {result.overview && (
                     <>
                         <DataName>Overview</DataName>
-                        <DataValue>{movie.overview}</DataValue>
+                        <DataValue>{result.overview}</DataValue>
                     </>
                 )}
 
             {loading && (
                 <ActivityIndicator style={{marginTop: 30}} color={'white'} />
             )}
+
+            {result.spoken_languages && (
+                <>
+                    <DataName>languages</DataName>
+                    <DataValue>{result.spoken_languages.map(l => l.name)}</DataValue>
+                </>
+            )}
+
+            {result.release_date && (
+              <>
+                <DataName>release Date</DataName>
+                <DataValue>{formatDate(result.release_date)}</DataValue>
+              </>
+            )}
+
+            {/*
+                status, runtime, first_air_date, genres
+
+            */}
+
+            {result.genres && (
+                <>
+                    <DataName>Genres</DataName>
+                    <DataValue>
+                        {result.genres.map((g, index) =>
+                            index + 1 === result.genres.length ?
+                                g.name : `${g.name}, `
+                        )}
+                    </DataValue>
+                </>
+            )}
+
             </Data>
+
 
         </>
     </ScrollContainer>
