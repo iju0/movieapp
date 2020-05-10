@@ -76,42 +76,39 @@ const DetailPresenter = ({result, loading, openBrowser }) => (
                     <Poster url={result.poster}/>
                     <Info>
                         <Title>{result.title}</Title>
-                        {result.votes && (<Vote votes={result.votes}/>)}
+                        {result.votes ? <Vote votes={result.votes}/> : null}
                     </Info>
                 </Container>
             </Header>
             <Data>
-                {result.overview && (
+                {result.overview ? (
                     <>
                         <DataName>Overview</DataName>
                         <DataValue>{result.overview}</DataValue>
                     </>
-                )}
+                ) : null}
 
-            {loading && (
-                <ActivityIndicator style={{marginTop: 30}} color={'white'} />
-            )}
+            {loading ? <ActivityIndicator style={{marginTop: 30}} color={'white'} /> : null}
 
-            {result.spoken_languages && (
+            {result.spoken_languages ? (
                 <>
                     <DataName>languages</DataName>
                     <DataValue>{result.spoken_languages.map(l => l.name)}</DataValue>
                 </>
-            )}
+            ) : null}
 
-            {result.release_date && (
+            {result.release_date ? (
               <>
                 <DataName>release Date</DataName>
                 <DataValue>{formatDate(result.release_date)}</DataValue>
               </>
-            )}
+            ) : null}
 
             {/*
                 status, runtime, first_air_date, genres
-
             */}
 
-            {result.genres && (
+            {result.genres ? (
                 <>
                     <DataName>Genres</DataName>
                     <DataValue>
@@ -121,10 +118,10 @@ const DetailPresenter = ({result, loading, openBrowser }) => (
                         )}
                     </DataValue>
                 </>
-            )}
+            ) : null}
 
 
-            {result.imdb_id && (
+            {result.imdb_id ? (
                 <>
                     <DataName>Links</DataName>
                     <Link
@@ -135,9 +132,9 @@ const DetailPresenter = ({result, loading, openBrowser }) => (
                         }
                     />
                 </>
-            )}
+            ) : null}
 
-            {result.videos.results?.length > 0 && (
+            {result.videos.results?.length > 0 ? (
                 <>
                     <DataName>Videos</DataName>
                     {result.videos.results.map(video => (
@@ -153,7 +150,7 @@ const DetailPresenter = ({result, loading, openBrowser }) => (
 
 
                 </>
-            )}
+            ) : null}
 
             </Data>
 

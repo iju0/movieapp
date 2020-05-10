@@ -22,10 +22,6 @@ const DetailContainer = ({
         title
     })
 
-    const [loading, setLoading] = useState(true)
-
-
-
     const [detail, setDetail] = useState({
         loading : true,
         result : {
