@@ -21,10 +21,11 @@ const Title = styled.Text`
 
 
 
-const Vertical = ({id, poster, title, vote}) => {
+const Vertical = ({id, poster, title, vote, isTv = false}) => {
     const navigation = useNavigation()
     const goToDetail = () => {
         navigation.navigate('Detail', {
+            isTv,
             id,
             poster,
             title,

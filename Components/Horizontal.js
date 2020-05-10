@@ -38,10 +38,11 @@ const OverView = styled.Text`
 `;
 
 
-const Horizontal = ({id, title, poster, overview, releaseDate}) => {
+const Horizontal = ({id, title, poster, overview, releaseDate, isTv}) => {
     const navigation = useNavigation()
     const goToDetail = () => {
         navigation.navigate('Detail', {
+            isTv,
             id,
             title,
             poster,
