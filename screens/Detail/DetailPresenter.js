@@ -6,6 +6,8 @@ import {apiImage} from '../../Api'
 import Poster from '../../Components/Poster'
 import Vote from '../../Components/Vote'
 import {formatDate} from '../../utils'
+import {TouchableOpacity} from "react-native-gesture-handler";
+import Link from '../../Components/Link'
 
 
 const Header = styled.View`
@@ -62,7 +64,7 @@ const DataName = styled.Text`
 
 
 
-const DetailPresenter = ({result, loading }) => (
+const DetailPresenter = ({result, loading, openBrowser }) => (
     <ScrollContainer
         loading={false}
         contentContainerStyle={{paddingBottom: 80}}
@@ -120,6 +122,16 @@ const DetailPresenter = ({result, loading }) => (
                     </DataValue>
                 </>
             )}
+
+                {result.imdb_id && (
+                    <Link
+                        text={'IMDB Page'}
+                        icon={'imdb'}
+                        onPress={() =>
+                            openBrowser(`https://www.imdb.com/title/${result.imdb_id}`)
+                        }
+                    />
+                )}
 
             </Data>
 

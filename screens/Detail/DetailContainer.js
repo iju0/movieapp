@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useLayoutEffect} from 'react'
-import { View, Text, Dimensions } from 'react-native'
+import * as WebBrowser from 'expo-web-browser'
 import DetailPresenter from './DetailPresenter'
 import {movieAPI, tvAPI, apiImage} from '../../Api'
 
@@ -36,6 +36,10 @@ const DetailContainer = ({
             votes
         }
     })
+
+    const openBrowser = async url => {
+        await WebBrowser.openBrowserAsync(url)
+    }
 
 
     const getData = async() => {
@@ -86,6 +90,7 @@ const DetailContainer = ({
     return (
         <DetailPresenter
             {...detail}
+            openBrowser={openBrowser}
         />
 
 
